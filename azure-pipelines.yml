@@ -7,22 +7,14 @@ trigger:
     - docs/*  # exclude the docs folder
 
 pool:
-<<<<<<< HEAD
   vmImage: 'ubuntu-16.04'
-=======
-  vmImage: 'Ubuntu-16.04'
->>>>>>> master
   demands:
     - npm
 
 variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-<<<<<<< HEAD
   dotnetSdkVersion: '3.1.100'
-=======
-  dotnetSdkVersion: '2.1.505'
->>>>>>> master
 
 steps:
 - task: DotNetCoreInstaller@0
@@ -51,7 +43,6 @@ steps:
     command: 'restore'
     projects: '**/*.csproj'
 
-<<<<<<< HEAD
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - $(buildConfiguration)'
   inputs:
@@ -79,16 +70,3 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
-=======
-- template: templates/build.yml
-  parameters:
-    buildConfiguration: 'Debug'
-
-- template: templates/build.yml
-  parameters:
-    buildConfiguration: 'Release'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  condition: succeeded()
->>>>>>> master
